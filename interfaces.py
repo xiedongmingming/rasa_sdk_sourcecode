@@ -25,14 +25,14 @@ class Tracker:
         """Create a tracker from dump."""
 
         return Tracker(
-            state["sender_id"],
-            state.get("slots", {}),
-            state.get("latest_message", {}),
-            state.get("events", []),
+            state["sender_id"],  # 字符串类型（当前对话用户的唯一ID）
+            state.get("slots", {}),  # 词槽列表
+            state.get("latest_message", {}),  # 包含3个键：intent、entities、text（用户的话）
+            state.get("events", []),  # 代表历史上所有的事件
             state.get("paused", False),
             state.get("followup_action"),
-            state.get("active_loop", state.get("active_form", {})),
-            state.get("latest_action_name"),
+            state.get("active_loop", state.get("active_form", {})),  # 表示当前被激活的表单（也可能为空-没有表单被激活）
+            state.get("latest_action_name"),  # 表示最后一个动作的名字
         )
 
     def __init__(
